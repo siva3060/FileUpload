@@ -1,0 +1,37 @@
+
+/*Design : Siva Charan
+ * Email : siva3060@gmail.com
+ * 
+ */
+.file_upload{
+	margin: 10px
+}
+.table_upload { 
+	margin: 0px auto; 
+}
+
+.error {
+	border: 2px solid red;
+}
+
+.input_file, .btn {
+	border: 2px solid gray;
+	color: gray;
+	background-color: white;
+	padding: 8px 20px;
+	border-radius: 8px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+
+body {
+	margin: 0;
+	padding: 2rem 1.5rem;
+	font: 1rem/1.5 "PT Sans", Arial, sans-serif;
+	color: #5a5a5a;
+}
+
+
+
