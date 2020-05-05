@@ -51,9 +51,12 @@ class App extends Component {
 	onClickHandler=()=>{
 		if(this.isValidFile()){
 		const data = new FormData();
-		data.append('file',this.state.selectedFile);
-		alert("server yet to configure");
+		data.append('upload_file',this.state.selectedFile[0]);
 		//use the axios API to send the file 
+		axios.post("https://15.188.74.126/<path-name>",data).then(res => {
+			//console.log("File has been uploaded sucessfully")
+			alert("File has been uploaded sucessfully");
+		});
 		}else{
 		alert("Enter a file with valid format");
 		}
