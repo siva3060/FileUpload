@@ -53,8 +53,9 @@ class App extends Component {
 		const data = new FormData();
 		data.append('upload_file',this.state.selectedFile[0]);
 		//use the axios API to send the file 
-		axios.post("https://15.188.74.126/<path-name>",data).then(res => {
+		axios.post("https://15.188.74.126/upload",data).then(res => {
 			//console.log("File has been uploaded sucessfully")
+			console.log(res.statusTest);
 			alert("File has been uploaded sucessfully");
 		});
 		}else{
