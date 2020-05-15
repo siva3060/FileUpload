@@ -16,8 +16,10 @@ class App extends Component {
 		super(props);
 		this.state = {
 			selectedFile:null,
+			httpRequest:"not updated",
 		}
 		this.isValidFile=this.isValidFile.bind(this)
+		this.handleHttpRequest=this.handleHttpRequest.bind(this)
 	}
 
 
@@ -47,13 +49,21 @@ class App extends Component {
 		}
 	}
 
+	handleHttpRequest = async ()=>{
+		const resp = await axios.get('http://15.188.74.126:8086/keepalive');
+		const data = resp.entity;
+		this.setState({httpRequest:data});
+	}
+
 	//after the submit button clicked 
 	onClickHandler=()=>{
+		console.log("insdie onclick handler");
 		if(this.isValidFile()){
 		const data = new FormData();
 		data.append('upload_file',this.state.selectedFile[0]);
+		this.handleHttpRequest();
 		//use the axios API to send the file 
-		axios.post("https://15.188.74.126/Upload",data).then(res => {
+		/*axios.post("https://15.188.74.126/Upload",data).then(res => {
 			//console.log("File has been uploaded sucessfully")
 			console.log(res.statusTest);
 			alert("File has been uploaded sucessfully");
@@ -61,6 +71,8 @@ class App extends Component {
 		}else{
 		alert("Enter a file with valid format");
 		}
+		*/
+	}
 	}
 
 
@@ -74,6 +86,7 @@ class App extends Component {
 	   <td><button type="button" className="btn" onClick={this.onClickHandler}>Upload</button></td>
 	    </tr>
 	    </table>
+	    <h1> Health Check  >>>>>>>>> {this.state.httpRequest}</h1>
 	    </div>
 	//end of return expression
     );
